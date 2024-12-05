@@ -1,4 +1,3 @@
-import {login} from '../../fixtures/selectors.json';
 let user = Cypress.env('users').authenticated;
 
 /**
