@@ -17,7 +17,11 @@ export default [
                 beforeEach: true,
                 cy: true,
                 Cypress: true,
+                describe: true,
                 expect: true,
+                it: true,
+                module: true,
+                process: true,
             },
         },
         plugins: {

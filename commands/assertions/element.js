@@ -1,4 +1,4 @@
-import message from '../../../../cypress/fixtures/message.json'
+import selector from '../../../../cypress/fixtures/selector.json'
 
 /**
  * Assert "selector" exists on page
@@ -53,7 +53,7 @@ const selectorVisible = selector => cy.get( selector ).then( $el => assert.isTru
 const selectorHidden = selector => cy.get( selector ).then( $el => assert.isTrue( Cypress.dom.isHidden( $el ) ) )
 
 /**
- *Assert link to "path" exists
+ *Assert link to "path" Exist
  * @param {string} uri  uri
  */
 const linkExist = uri => cy.get( `a[href$="${uri}"]` ).should( 'exist' )
@@ -94,12 +94,17 @@ const metaProp = ( property, text ) => cy.get( `meta[property="${property}"]` ).
  * Assert script element with "scriptSrc" exists
  * @param {string} scriptSrc
  */
-const scriptExist = scriptSrc => selectorExist( `script[src="${scriptSrc}"]` )
+const scriptExists = scriptSrc => selectorExist( `script[src="${scriptSrc}"]` )
+
+/**
+ * "Error" selector does exist on page. Alias
+ */
+const seeErrors = () => selectorExist( selector.error )
 
 /**
  * "Error" selector does NOT exist on page. Alias
  */
-const notSeeErrors = () => selectorNotExist( message.error )
+const notSeeErrors = () => selectorNotExist( selector.error )
 
 Cypress.Commands.add( 'selectorExist', selectorExist )
 Cypress.Commands.add( 'selectorNotExist', selectorNotExist )
@@ -117,6 +122,7 @@ Cypress.Commands.add( 'titleContains', titleContains )
 Cypress.Commands.add( 'metaDescription', metaDescription )
 Cypress.Commands.add( 'metaName', metaName )
 Cypress.Commands.add( 'metaProp', metaProp )
-Cypress.Commands.add( 'scriptExist', scriptExist )
+Cypress.Commands.add( 'scriptExist', scriptExists )
 
+Cypress.Commands.add( 'seeErrors', seeErrors )
 Cypress.Commands.add( 'notSeeErrors', notSeeErrors )
