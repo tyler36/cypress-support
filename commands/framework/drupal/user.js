@@ -1,4 +1,4 @@
-import { block } from '../../../fixtures/selectors.json'
+import { block } from '../../../../cypress/fixtures/selectors.json'
 
 /**
  * @description               Helper function to create a user
