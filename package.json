@@ -1,0 +1,10 @@
+{
+  "name": "cypress-support",
+  "description": "Helper command for Cypress.",
+  "version": "0.1.0",
+  "author": "tyler36",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
