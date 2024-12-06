@@ -11,19 +11,18 @@
  * @param {string} data  Node fields Will be parse by JSON
  * @param {object} owner Drupal owner
  */
-let seedNode = ( type, data, owner = "editor123" ) => {
-    let users = Object.fromEntries( Object.entries( Cypress.env( 'users' ) )
-        .filter( ( [ key, value ] ) => value.name === owner ) );
+const seedNode = ( type, data, owner = 'editor123' ) => {
+    const users = Object.fromEntries( Object.entries( Cypress.env( 'users' ) ).
+        filter( ( [, value,] ) => value.name === owner ) )
 
     if ( !Object.keys( users ).length ) {
-        throw new Error( `${owner} does not exist in ENV` );
+        throw new Error( `${owner} does not exist in ENV` )
     }
 
-    let user = users[ Object.keys( users )[ 0 ] ];
+    const user = users[Object.keys( users )[0]]
 
-    cy.getRestToken( user.name, user.password ).then(
-        token => cy.createNode( token, type, JSON.parse( data.replaceAll( '\'', '"' ) ) )
-    );
+    cy.getRestToken( user.name, user.password ).
+        then( token => cy.createNode( token, type, JSON.parse( data.replaceAll( '\'', '"' ) ) ) )
 }
 
 /**
@@ -32,14 +31,14 @@ let seedNode = ( type, data, owner = "editor123" ) => {
  * @param {string} password   Password
  * @return {object}           Cypress $Chainer
  */
-Cypress.Commands.add('getRestToken', (user, password) => {
-  cy.login(user, password);
+Cypress.Commands.add( 'getRestToken', ( user, password ) => {
+    cy.login( user, password )
 
-  return cy.request({
-    method: 'GET',
-    url: '/session/token',
-  }).its('body');
-});
+    return cy.request( {
+        method: 'GET',
+        url: '/session/token',
+    } ).its( 'body' )
+} )
 
 /**
  * @description             Create a new node
@@ -48,23 +47,21 @@ Cypress.Commands.add('getRestToken', (user, password) => {
  * @param {object} fields   { field: value } for nodeType
  * @return {object}         Cypress $Chainer
  */
-Cypress.Commands.add('createNode', (token, nodeType, fields) => {
-  return cy.request({
+Cypress.Commands.add( 'createNode', ( token, nodeType, fields ) => cy.request( {
     method: 'POST',
     url: `/jsonapi/node/${nodeType}`,
     headers: {
-      'Accept': 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json',
-      'X-CSRF-Token': token
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'X-CSRF-Token': token,
     },
     body: {
-      data: {
-        type: `node--${nodeType}`,
-        attributes: fields
-      }
+        data: {
+            type: `node--${nodeType}`,
+            attributes: fields,
+        },
     },
-  }).its('body');
-});
+} ).its( 'body' ) )
 
 
 /**
@@ -74,17 +71,15 @@ Cypress.Commands.add('createNode', (token, nodeType, fields) => {
  * @param {uuid} uuid       { field: value } for nodeType
  * @return {object}         Cypress $Chainer
  */
-Cypress.Commands.add('deleteNode', (token, nodeType, uuid) => {
-  return cy.request({
+Cypress.Commands.add( 'deleteNode', ( token, nodeType, uuid ) => cy.request( {
     method: 'DELETE',
     url: `/jsonapi/node/${nodeType}/${uuid}`,
     headers: {
-      'Accept': 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json',
-      'X-CSRF-Token': token
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'X-CSRF-Token': token,
     },
-  }).its('body');
-});
+} ).its( 'body' ) )
 
 
 /**
@@ -94,19 +89,15 @@ Cypress.Commands.add('deleteNode', (token, nodeType, uuid) => {
  * @param {string} title     String to match against 'title' field
  * @returns {object}        Nodes of type "nodeType" that have a title matching
  */
-Cypress.Commands.add('getNodesWithTitle', (token, nodeType, title) => {
-  return cy.request({
+Cypress.Commands.add( 'getNodesWithTitle', ( token, nodeType, title ) => cy.request( {
     method: 'GET',
     url: `/jsonapi/node/${nodeType}?filter[article-title][path]=title&filter[article-title][value]=${title}`,
     headers: {
-      'Accept': 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json',
-      'X-CSRF-Token': token
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'X-CSRF-Token': token,
     },
-  }).then(res => {
-    return res.body.data;
-  });
-});
+} ).then( res => res.body.data ) )
 
 /**
  * @description             Delete all nodes that match the title
@@ -114,13 +105,11 @@ Cypress.Commands.add('getNodesWithTitle', (token, nodeType, title) => {
  * @param {string} title    String to match against 'title' field
  * @returns {object}        Nodes of type "nodeType" that have a title matching
  */
-Cypress.Commands.add('deleteByTitle', (token, title) => {
-  return cy.getNodesWithTitle(token, 'article', title)
-    .then(nodes => {
-      nodes.map(function(node){
-        cy.deleteNode(token, 'article', node.id);
-      });
-    });
-});
+Cypress.Commands.add( 'deleteByTitle', ( token, title ) => cy.getNodesWithTitle( token, 'article', title ).
+    then( nodes => {
+        nodes.map( node => {
+            cy.deleteNode( token, 'article', node.id )
+        } )
+    } ) )
 
-Cypress.Commands.add( 'seedNode', seedNode );
+Cypress.Commands.add( 'seedNode', seedNode )

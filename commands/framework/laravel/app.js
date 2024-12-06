@@ -7,26 +7,27 @@
  *
  * @example cy.artisan('cache:clear');
  */
-Cypress.Commands.add('artisan', (command, parameters = {}, options = {}) => {
-    options = Object.assign({}, { log: true }, options);
+Cypress.Commands.add( 'artisan', ( command, parameters = {}, options = {} ) => {
+    options = Object.assign( {}, { log: true, }, options )
 
-    if (options.log) {
-        Cypress.log({
+    if ( options.log ) {
+        Cypress.log( {
             name: 'artisan',
             message: command,
-            consoleProps: () => ({ command, parameters }),
-        });
+            consoleProps: () => ( { command,
+                parameters, } ),
+        } )
     }
 
-    return cy.csrfToken().then((token) => {
-        return cy.request({
-            method: 'POST',
-            url: '/__cypress__/artisan',
-            body: { command: command, parameters: parameters, _token: token },
-            log: false,
-        });
-    });
-});
+    return cy.csrfToken().then( token => cy.request( {
+        method: 'POST',
+        url: '/__cypress__/artisan',
+        body: { command: command,
+            parameters: parameters,
+            _token: token, },
+        log: false,
+    } ) )
+} )
 
 /**
  * Execute arbitrary PHP.
@@ -36,26 +37,23 @@ Cypress.Commands.add('artisan', (command, parameters = {}, options = {}) => {
  * @example cy.php('2 + 2');
  *          cy.php('App\\User::count()');
  */
-Cypress.Commands.add('php', (command) => {
-    return cy
-        .csrfToken()
-        .then((token) => {
-            return cy.request({
-                method: 'POST',
-                url: '/__cypress__/run-php',
-                body: { command: command, _token: token },
-                log: false,
-            });
-        })
-        .then((response) => {
-            Cypress.log({
-                name: 'php',
-                message: command,
-                consoleProps: () => ({ result: response.body.result }),
-            });
-        })
-        .its('body.result', { log: false });
-});
+Cypress.Commands.add( 'php', command => cy.
+    csrfToken().
+    then( token => cy.request( {
+        method: 'POST',
+        url: '/__cypress__/run-php',
+        body: { command: command,
+            _token: token, },
+        log: false,
+    } ) ).
+    then( response => {
+        Cypress.log( {
+            name: 'php',
+            message: command,
+            consoleProps: () => ( { result: response.body.result, } ),
+        } )
+    } ).
+    its( 'body.result', { log: false, } ) )
 
 
 /**
@@ -63,22 +61,18 @@ Cypress.Commands.add('php', (command) => {
  *
  * @example cy.refreshRoutes();
  */
-Cypress.Commands.add('refreshRoutes', () => {
-    return cy.csrfToken().then((token) => {
-        return cy
-            .request({
-                method: 'POST',
-                url: '/__cypress__/routes',
-                body: { _token: token },
-                log: false,
-            })
-            .its('body', { log: false })
-            .then((routes) => {
-                cy.writeFile('cypress/support/routes.json', routes, {
-                    log: false,
-                });
+Cypress.Commands.add( 'refreshRoutes', () => cy.csrfToken().then( token => cy.
+    request( {
+        method: 'POST',
+        url: '/__cypress__/routes',
+        body: { _token: token, },
+        log: false,
+    } ).
+    its( 'body', { log: false, } ).
+    then( routes => {
+        cy.writeFile( 'cypress/support/routes.json', routes, {
+            log: false,
+        } )
 
-                Cypress.Laravel.routes = routes;
-            });
-    });
-});
+        Cypress.Laravel.routes = routes
+    } ) ) )

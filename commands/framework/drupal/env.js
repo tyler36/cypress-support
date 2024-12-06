@@ -4,12 +4,12 @@
  * @return {object}       Cypress $Chainer
  */
 Cypress.Commands.add( 'getEnvUser', name => {
-    let user = Object.fromEntries( Object.entries( Cypress.env( 'users' ) )
-        .filter( ( [ key, value ] ) => value.name === name ) );
+    const user = Object.fromEntries( Object.entries( Cypress.env( 'users' ) ).
+        filter( ( [, value,] ) => value.name === name ) )
 
     if ( !Object.keys( user ).length ) {
-        throw new Error( `${name} does not exist in ENV` );
+        throw new Error( `${name} does not exist in ENV` )
     }
 
-    return user;
-} );
+    return user
+} )
