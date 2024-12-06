@@ -39,4 +39,24 @@ describe( 'assertions', () => {
 
         cy.seeErrors()
     } )
+
+    it( 'tests strings', () => {
+        cy.visit( '/elements.html' )
+        cy.stringExist( 'Elements Title' )
+        cy.stringNotExist( 'Copyright 2010' )
+    } )
+
+    it( 'tests urls', () => {
+        cy.visit( '/elements.html' )
+        cy.pathEqual( '/elements.html' )
+        cy.pathNotEqual( '/elements' )
+
+        cy.pathIncludes( 'elements' )
+        cy.pathNotIncludes( 'user' )
+    } )
+
+    it( 'asserts status code', () => {
+        cy.expectStatus( '/', 200 )
+        cy.expectStatus( '/invalid', 404 )
+    } )
 } )
