@@ -85,7 +85,7 @@ Cypress.Commands.add('logout', () => {
 /**
  * @description             Change Locale
  * @param {string} locale   2-char locale code
- * @return {object}　　　　 Cypress $Chainer
+ * @return {object}         Cypress $Chainer
  */
 Cypress.Commands.add('setLocale', (locale) => {
   return cy.get(`${block.language_switcher} a[hreflang="${locale}"]`).click();

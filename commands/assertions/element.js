@@ -1,4 +1,4 @@
-import { message } from '../../../fixtures/selectors.json'
+import { message } from '../../../fixtures/message.json'
 
 /**
  * Assert "selector" exists on page
