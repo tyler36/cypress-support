@@ -33,6 +33,8 @@ jobs:
 
       - name: '⚙️ DDEV'
         uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
 
       - name: '✅ Run BATS tests'
         run: bats tests/test.bat
