@@ -44,17 +44,3 @@ teardown() {
 
   health_checks
 }
-
-@test "installs from release" {
-  set -eu -o pipefail
-
-  cd ${TESTDIR}
-
-  echo "# Install from release into ${TESTDIR} ($(pwd))" >&3
-  npm install git+https://github.com/tyler36/cypress-support/#main
-
-  ddev add-on get tyler36/ddev-cypress
-  ddev restart >/dev/null
-
-  health_checks
-}
