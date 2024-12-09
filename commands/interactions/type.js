@@ -11,14 +11,4 @@ const typeStringInto = ( value, name ) => cy.get( `[name="${name}"]` ).
         force: true,
     } )
 
-/**
- * Enter a "value" into a "name" form element controlled by CKEditor
- * @param {string} value    data to enter into form
- * @param {string} name     "name" attribute of form element
- */
-const typeStringIntoCkeditor = ( value, name ) => {
-    cy.ckeditor_type( name, value )
-}
-
 Cypress.Commands.add( 'typeStringInto', typeStringInto )
-Cypress.Commands.add( 'typeStringIntoCkeditor', typeStringIntoCkeditor )

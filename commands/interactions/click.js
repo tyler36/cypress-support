@@ -45,16 +45,8 @@ const selectOption = ( value, selector ) => {
 }
 
 
-/**
- * Alias to submit a form by clicking on a "selector"
- * @param {string} selector Submit button selector
- */
-const submit = ( selector = '#edit-submit' ) => clickSelector( selector )
-
-
 Cypress.Commands.add( 'clickSelector', clickSelector )
 Cypress.Commands.add( 'clickText', clickText )
 Cypress.Commands.add( 'clickTextIn', clickTextIn )
 Cypress.Commands.add( 'checkSelector', checkSelector )
 Cypress.Commands.add( 'selectOption', selectOption )
-Cypress.Commands.overwrite( 'submit', submit )
