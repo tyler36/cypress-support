@@ -6,6 +6,7 @@
   "author": "tyler36",
   "license": "ISC",
   "scripts": {
+    "lint": "npx eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
