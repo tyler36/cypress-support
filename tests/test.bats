@@ -13,25 +13,29 @@ setup() {
 }
 
 health_checks() {
-  # ddev cypress-run --version | grep "Cypress package version"
   ddev cypress-run | grep "All specs passed"
 }
 
 teardown() {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  # ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
-  # [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
+  ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
+  [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
 }
 
-@test "installs from " {
+@test "installs from local copy" {
   set -eu -o pipefail
+
+  # Create a tarball to later install.
+  cd "${DIR}"
+  PACKAGE_TGZ=$(npm pack)
   cd ${TESTDIR}
-  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+
+  echo "# Install local ${DIR} into ${TESTDIR} ($(pwd))" >&3
+  npm install "${DIR}/${PACKAGE_TGZ}"
+
   ddev add-on get tyler36/ddev-cypress
   ddev restart >/dev/null
 
-  # Install support file
-  npm install git+https://github.com/tyler36/cypress-support\#prep-for-release
   health_checks
 }
