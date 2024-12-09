@@ -24,3 +24,15 @@ jobs:
         with:
           reporter: github-check
           fail_level: "any"
+          
+  bats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '☁️ Checkout repository'
+        uses: actions/checkout@v4
+
+      - name: '⚙️ DDEV'
+        uses: ddev/github-action-setup-ddev@v1
+
+      - name: '✅ Run BATS tests'
+        run: bats tests/test.bat
