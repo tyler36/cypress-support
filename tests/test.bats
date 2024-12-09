@@ -18,6 +18,11 @@ health_checks() {
 
 teardown() {
   set -eu -o pipefail
+
+  # Remove the tarball, if it exists
+  cd ${DIR}
+  rm ${PACKAGE_TGZ} >/dev/null 2>&1
+
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
   [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
