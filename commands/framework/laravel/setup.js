@@ -1,17 +1,17 @@
-import './routes';
-import './app';
-import './auth';
-import './database';
-import './visit';
+import './app'
+import './auth'
+import './database'
+import './routes'
+import './visit'
 
-before(() => {
-    cy.task('activateCypressEnvFile', {}, { log: false });
-    cy.artisan('config:clear', {}, { log: false });
+before( () => {
+    cy.task( 'activateCypressEnvFile', {}, { log: false, } )
+    cy.artisan( 'config:clear', {}, { log: false, } )
 
-    cy.refreshRoutes();
-});
+    cy.refreshRoutes()
+} )
 
-after(() => {
-    cy.task('activateLocalEnvFile', {}, { log: false });
-    cy.artisan('config:clear', {}, { log: false });
-});
+after( () => {
+    cy.task( 'activateLocalEnvFile', {}, { log: false, } )
+    cy.artisan( 'config:clear', {}, { log: false, } )
+} )

@@ -1,3 +1,3 @@
-const stringToJson = data => JSON.parse(data.replaceAll("'", '"'));
+const stringToJson = data => JSON.parse( data.replaceAll( "'", '"' ) )
 
-export {stringToJson};
+export { stringToJson }

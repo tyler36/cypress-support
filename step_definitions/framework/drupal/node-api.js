@@ -1,3 +1,3 @@
-import { Given, When, Then, And } from '@badeball/cypress-cucumber-preprocessor'
+import { Given } from '@badeball/cypress-cucumber-preprocessor'
 
-Given('I seed {string} with {string}', cy.seedNode)
+Given( 'I seed {string} with {string}', cy.seedNode )

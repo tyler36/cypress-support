@@ -1,0 +1,110 @@
+<html class="h-full">
+  <head>
+    <style>
+      .h-full {
+        height: 100vh;
+      }
+      #toTop {
+        display: none;
+        position: fixed;
+        background-color: tomato;
+        bottom: 1rem;
+        right: 1rem;
+      }
+      .privacy {
+        max-height: 100px;
+        overflow-y: scroll;
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body class="h-full">
+    <main class="h-full">
+      <div js-test="click">clickable</div>
+
+      <form>
+        <div>
+          <label for="email">Email</label>
+          <input type="text" name="email" />
+        </div>
+        <div>
+          <label for="checkbox">Checkable</label>
+          <input name="checkbox" type="checkbox" />
+        </div>
+        <div>
+          <label for="fruit">Fruit</label>
+          <select name="fruit">
+            <option value="apple">apple</option>
+            <option value="banana">banana</option>
+          </select>
+        </div>
+        <div class="privacy">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis officia hic
+          expedita veniam cum. Illum, voluptate. Laudantium in unde sunt commodi ratione
+          consequuntur illum officia facilis eius a, perferendis officiis aliquam velit
+          ipsum porro nam ut suscipit quae ea? Nobis eius eveniet blanditiis
+          necessitatibus quis illum quaerat obcaecati commodi explicabo quam rerum
+          voluptate, labore tenetur repellendus tempora culpa doloribus. Pariatur
+          veritatis modi illum! Illo dicta at laudantium quo obcaecati quas dignissimos
+          aliquam incidunt unde molestiae tenetur reiciendis, explicabo quos minima
+          corrupti corporis amet doloribus neque ipsa vitae pariatur. Natus minus
+          assumenda quidem autem facilis molestiae deleniti maiores dicta quibusdam dolor!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit consectetur
+          reiciendis ipsum possimus quo dolore non placeat corporis atque sed voluptatem
+          modi magni natus quasi rem enim in eius laborum, sequi aspernatur tempora
+          provident sit? Perferendis ex, autem rerum vitae culpa est illo dignissimos
+          aliquam deleniti excepturi, accusamus fuga laboriosam? Ipsam, nobis est porro
+          fugiat mollitia dicta dolor suscipit odit iste numquam eveniet? Unde incidunt
+          odio omnis nesciunt sequi doloribus obcaecati aut, praesentium voluptates. Ipsa
+          incidunt vitae unde debitis sapiente, quidem aperiam laboriosam perspiciatis
+          porro accusantium in dolorem temporibus tempore, nemo quos, autem assumenda
+          delectus possimus? Voluptatem dolor sunt repellat, numquam ratione illum libero
+          tenetur, quo molestiae suscipit ad eveniet hic quae placeat fugit quis earum.
+          Doloribus culpa cumque fugiat, aliquam inventore distinctio ex libero
+          voluptatibus est dolorum, maiores eaque incidunt dolores ipsam atque iure
+          laboriosam in optio, dignissimos ratione magnam sapiente blanditiis. Minima
+          reiciendis, praesentium ut necessitatibus inventore minus doloremque debitis,
+          eum nisi molestias saepe, dignissimos nobis rem quasi quibusdam! Similique nemo
+          dolorum dolorem dolore iste, nulla inventore eum distinctio minus facere magnam.
+          Dolore quidem veniam a quisquam possimus deleniti ipsum provident veritatis
+          minima esse ipsam praesentium sit, voluptatum quod necessitatibus, voluptas
+          repellat quia. Perspiciatis, alias accusantium! Necessitatibus, incidunt.
+          Finished!
+        </div>
+        <div id="privacy-confirmed" style="display: none;">.privacy scrolled</div>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <footer style="padding-top: 500px">
+      <div js-test="click">clickable</div>
+      <div id="toTop">To Top</div>
+    </footer>
+    <script>
+      document.addEventListener('click', (el) => {
+        if (el.target.getAttribute('js-test') === 'click') {
+          el.target.innerText = 'updated'
+        }
+      })
+
+      document.addEventListener('scroll', () => {
+        const toTop = document.getElementById('toTop')
+        if (window.scrollY >= 200) {
+          toTop.style.display = 'block'
+        } else {
+          toTop.style.display = 'none'
+        }
+      })
+      document.querySelector('.privacy').addEventListener('scroll', function () {
+        const privacyDiv = this
+        const targetDiv = document.getElementById('privacy-confirmed')
+
+        // Check if the user has scrolled to the bottom of the privacy div
+        if (privacyDiv.scrollTop + privacyDiv.clientHeight >= privacyDiv.scrollHeight) {
+          targetDiv.style.display = 'block' // Show the div
+        } else {
+          targetDiv.style.display = 'none' // Hide the div
+        }
+      })
+    </script>
+  </body>
+</html>
