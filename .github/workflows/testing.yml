@@ -2,6 +2,11 @@ name: linting
 
 on:
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Debug with tmate set "debug_enabled"'
+        required: false
+        default: "false"
   push:
     branches: [main]
   pull_request:
