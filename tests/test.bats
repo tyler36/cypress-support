@@ -21,7 +21,9 @@ teardown() {
 
   # Remove the tarball, if it exists
   cd ${DIR}
-  rm ${PACKAGE_TGZ} >/dev/null 2>&1
+  if [ -f "$PACKAGE_TGZ" ];then
+    rm ${PACKAGE_TGZ} >/dev/null 2>&1
+  fi
 
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1
