@@ -106,6 +106,15 @@ const seeErrors = () => selectorExist( selector.error )
  */
 const notSeeErrors = () => selectorNotExist( selector.error )
 
+/**
+ * Selector has CSS set to value.
+ */
+const cssSelectorSet = (selector, key, value ) => cy.get( selector ).should( 'have.css', key, value )
+/**
+ * Selector does NOT have CSS set to value.
+ */
+const cssSelectorNotSet = (selector, key, value ) => cy.get( selector ).should( 'have.css', key, value )
+
 Cypress.Commands.add( 'selectorExist', selectorExist )
 Cypress.Commands.add( 'selectorNotExist', selectorNotExist )
 Cypress.Commands.add( 'selectorContainsString', selectorContainsString )
@@ -123,6 +132,9 @@ Cypress.Commands.add( 'metaDescription', metaDescription )
 Cypress.Commands.add( 'metaName', metaName )
 Cypress.Commands.add( 'metaProp', metaProp )
 Cypress.Commands.add( 'scriptExist', scriptExists )
+
+Cypress.Commands.add( 'cssSelectorSet', cssSelectorSet)
+Cypress.Commands.add( 'cssSelectorNotSet', cssSelectorNotSet)
 
 Cypress.Commands.add( 'seeErrors', seeErrors )
 Cypress.Commands.add( 'notSeeErrors', notSeeErrors )

@@ -28,5 +28,8 @@ Then( 'the {string} metaName should be {string}', cy.metaName )
 
 Then( 'I should see a script with src={string}', cy.scriptExist )
 
+Then( 'the {string} selector should have CSS {string} set to {string}', cy.cssSelectorSet)
+Then( 'the {string} selector should not have CSS {string} set to {string}', cy.cssSelectorNotSet)
+
 Then( 'I should not see errors', cy.notSeeErrors )
 Then( 'エラーは表示されません', cy.notSeeErrors )
