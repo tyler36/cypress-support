@@ -1,4 +1,4 @@
-Feature: Assertions
+Feature: Assertions Step Definitions
   Scenario: It tests selectors
     When I visit "/elements.html"
     Then I should see a "h1" selector
@@ -29,6 +29,6 @@ Feature: Assertions
     Then the path should include "elements"
     And the path should not include "user"
 
-  Scenario: It asserts status codes
+  Scenario: It tests status codes
     When I request "/", I expect a "200" status code
     When I request "/invalid", I expect a "404" status code

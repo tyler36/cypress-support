@@ -1,4 +1,4 @@
-describe( 'browser', () => {
+describe( 'Browser Commands', () => {
     it( 'removes sticky from page header', () => {
         cy.visit( '/browser.html' )
 

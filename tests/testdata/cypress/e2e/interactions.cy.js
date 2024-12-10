@@ -1,4 +1,4 @@
-describe( 'interactions', () => {
+describe( 'Interaction Commands', () => {
     it( 'clicks a selector', () => {
         cy.visit( '/interactions.html' )
 

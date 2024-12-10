@@ -1,4 +1,4 @@
-describe( 'assertions', () => {
+describe( 'Assertion Commands', () => {
     it( 'tests selectors', () => {
         cy.visit( '/elements.html' )
 
@@ -55,7 +55,7 @@ describe( 'assertions', () => {
         cy.pathNotIncludes( 'user' )
     } )
 
-    it( 'asserts status code', () => {
+    it( 'tests status code', () => {
         cy.expectStatus( '/', 200 )
         cy.expectStatus( '/invalid', 404 )
     } )
