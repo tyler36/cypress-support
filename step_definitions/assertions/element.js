@@ -1,10 +1,10 @@
 import { Then } from '@badeball/cypress-cucumber-preprocessor'
 
 Then( 'I should see a {string} selector', cy.selectorExist )
-Then( 'I should not see {string} selector', cy.selectorNotExist )
+Then( 'I should not see a {string} selector', cy.selectorNotExist )
 
-Then( 'I should see {string} in {string}', cy.selectorContainsString )
-Then( 'I should not see {string} in {string}', cy.selectorNotContainsString )
+Then( 'I should see {string} in {string}', ( string, selector ) => cy.selectorContainsString( selector, string ) )
+Then( 'I should not see {string} in {string}', ( string, selector ) => cy.selectorNotContainsString( selector, string ) )
 
 Then( '{string} should have {string} value', cy.selectorContainsValue )
 Then( '{string} should not have {string} value', cy.selectorNotContainsValue )
