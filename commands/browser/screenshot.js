@@ -7,6 +7,7 @@ const matchElement = selector => cy.get( selector ).matchImageSnapshot()
 /**
  * Assert "selector" element matches "named" image screenshot
  * @param {string} selector
+ * @param {string} name
  */
 const matchElementNamed = ( selector, name ) => cy.get( selector ).matchImageSnapshot( name )
 

@@ -43,7 +43,7 @@ declare namespace Cypress {
      * @param {string} selector
      * @param {string} value
      */
-    selectorContainsValue(selector: string, value: string): Chainable<Element>
+    selectorNotContainsValue(selector: string, value: string): Chainable<Element>
     /**
      * Assert "selector" is visible on page
      * @param {string} selector
@@ -92,9 +92,27 @@ declare namespace Cypress {
      */
     scriptExist(scriptSrc: string): Chainable<Element>
     /**
+     * "Error" selector exists on page. Alias
+     */
+    seeErrors(): Chainable<Element>
+    /**
      * "Error" selector does NOT exist on page. Alias
      */
     notSeeErrors(): Chainable<Element>
+    /**
+     * Selector has CSS set to value.
+     * @param {string} selector
+     * @param {string} key
+     * @param {string} value
+     */
+    cssSelectorSet(selector: string, key: string, value: string): Chainable<Element>
+    /**
+     * Selector does not have CSS set to value.
+     * @param {string} selector
+     * @param {string} key
+     * @param {string} value
+     */
+    cssSelectorNotSet(selector: string, key: string, value: string): Chainable<Element>
     // --------------------------------------
     // assertions/string.js
     // --------------------------------------
@@ -104,8 +122,8 @@ declare namespace Cypress {
      */
     stringExist(string: string): Chainable<Element>
     /**
-     * Assert "string" does NOT exist within body
-     * @param {string} string   Text to find
+     * Assert "text" does NOT exist within body
+     * @param {string} text   Text to find
      */
     stringNotExist(string: string): Chainable<Element>
     // --------------------------------------
@@ -134,6 +152,7 @@ declare namespace Cypress {
     /**
      * Request "path" and expect a "statusCode"
      * @param {string} path appearing after baseURL
+     * @param {string} statusCode expected status code
      */
     expectStatus(string: string): Chainable<Element>
     // --------------------------------------
@@ -154,6 +173,7 @@ declare namespace Cypress {
     /**
      * Assert "selector" element matches "named" image screenshot
      * @param {string} selector
+     * @param {string} name
      */
     matchElementNamed(string: string): Chainable<Element>
     /**

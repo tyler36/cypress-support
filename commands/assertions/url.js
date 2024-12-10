@@ -25,6 +25,7 @@ const pathNotIncludes = path => cy.url().should( 'not.include', path )
 /**
  * Request "path" and expect a "statusCode"
  * @param {string} path appearing after baseURL
+ * @param {string} statusCode expected status code
  */
 const expectStatus = ( path, statusCode ) => cy.request( {
     url: path,

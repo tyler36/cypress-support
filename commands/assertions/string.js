@@ -6,7 +6,7 @@ const stringExist = string => cy.get( `body` ).contains( string )
 
 /**
  * Assert "string" does NOT exist within body
- * @param {string} string   Text to find
+ * @param {string} text   Text to find
  */
 const stringNotExist = string => cy.get( `body` ).should( 'not.contain', string )
 
