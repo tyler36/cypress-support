@@ -30,7 +30,7 @@ const expectStatus = ( path, statusCode ) => cy.request( {
     url: path,
     failOnStatusCode: false,
 } ).then( response => {
-    expect( response.status ).to.eql( statusCode )
+    expect( response.status ).to.equal( parseInt(statusCode) )
 } )
 
 
