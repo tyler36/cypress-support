@@ -28,7 +28,7 @@ teardown() {
   [ "${TESTDIR}" != "" ] && rm -rf ${TESTDIR}
 }
 
-@test "installs from local copy" {
+@test "runs commands in local environment" {
   set -eu -o pipefail
 
   # Create a tarball to later install.

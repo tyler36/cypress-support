@@ -1,0 +1,46 @@
+name: linting
+
+on:
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Debug with tmate set "debug_enabled"'
+        required: false
+        default: "false"
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+  - cron: '30 05 * * *'
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+      - run: npm i
+
+      - name: "🧹 Run Eslint"
+        uses: reviewdog/action-eslint@v1
+        with:
+          reporter: github-check
+          fail_level: "any"
+
+  bats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '☁️ Checkout repository'
+        uses: actions/checkout@v4
+
+      - name: 'github-action-add-on-test'
+        uses: ddev/github-action-add-on-test@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          addon_repository: ${{ env.GITHUB_REPOSITORY }}
+          addon_ref: ${{ env.GITHUB_REF }}
