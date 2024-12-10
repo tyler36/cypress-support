@@ -107,11 +107,28 @@ const seeErrors = () => selectorExist( selector.error )
 const notSeeErrors = () => selectorNotExist( selector.error )
 
 /**
+ * Selector is checked
+ * @param {string} selector
+ */
+const selectorIsChecked = (selector) => cy.get(`[name="${selector}"]`).should('be.checked')
+/**
+ * Selector is not checked
+ * @param {string} selector
+ */
+const selectorIsNotChecked = (selector) => cy.get(`[name="${selector}"]`).should('not.be.checked')
+
+/**
  * Selector has CSS set to value.
+ * @param {string} selector
+ * @param {string} key
+ * @param {string} value
  */
 const cssSelectorSet = (selector, key, value ) => cy.get( selector ).should( 'have.css', key, value )
 /**
  * Selector does NOT have CSS set to value.
+ * @param {string} selector
+ * @param {string} key
+ * @param {string} value
  */
 const cssSelectorNotSet = (selector, key, value ) => cy.get( selector ).should( 'have.css', key, value )
 
@@ -133,6 +150,8 @@ Cypress.Commands.add( 'metaName', metaName )
 Cypress.Commands.add( 'metaProp', metaProp )
 Cypress.Commands.add( 'scriptExist', scriptExists )
 
+Cypress.Commands.add( 'selectorIsChecked', selectorIsChecked)
+Cypress.Commands.add( 'selectorIsNotChecked', selectorIsNotChecked)
 Cypress.Commands.add( 'cssSelectorSet', cssSelectorSet)
 Cypress.Commands.add( 'cssSelectorNotSet', cssSelectorNotSet)
 

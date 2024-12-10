@@ -100,6 +100,16 @@ declare namespace Cypress {
      */
     notSeeErrors(): Chainable<Element>
     /**
+     * Selector is checked
+     * @param {string} selector
+     */
+      selectorIsChecked(selector: string): Chainable<Element>
+    /**
+     * Selector is not checked
+     * @param {string} selector
+     */
+      selectorIsNotChecked(selector: string): Chainable<Element>
+    /**
      * Selector has CSS set to value.
      * @param {string} selector
      * @param {string} key
