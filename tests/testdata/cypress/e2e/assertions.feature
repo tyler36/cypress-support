@@ -1,6 +1,6 @@
 Feature: Assertions Step Definitions
   Scenario: It tests selectors
-    When I visit "/elements.html"
+    Given I visit "/elements.html"
     Then I should see a "h1" selector
     And I should not see a ".foobar" selector
     Then I should see "Elements Title" in "h1"
@@ -18,12 +18,12 @@ Feature: Assertions Step Definitions
     Then I should see a script with src="example.js"
 
   Scenario: It tests strings
-    When I visit "/elements.html"
+    Given I visit "/elements.html"
     Then I should see "Elements Title"
     And I should not see "Copyright 2010"
 
   Scenario: It tests URLs
-    When I visit "/elements.html"
+    Given I visit "/elements.html"
     Then the path should be "/elements.html"
     And the path should not be "/elements"
     Then the path should include "elements"
