@@ -7,6 +7,4 @@ describe( 'Browser Commands', () => {
         cy.disableHeader()
         cy.get( 'header' ).should( 'have.css', 'position', 'relative' )
     } )
-
-    // TODO: Add screenshot tests
 } )

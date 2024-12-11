@@ -173,24 +173,6 @@ declare namespace Cypress {
      */
     disableHeader(): Chainable<Element>
     // --------------------------------------
-    // browser/screenshot.js
-    // --------------------------------------
-    /**
-     * Assert "selector" element matches image screenshot
-     * @param {string} selector
-     */
-    matchElement(string: string): Chainable<Element>
-    /**
-     * Assert "selector" element matches "named" image screenshot
-     * @param {string} selector
-     * @param {string} name
-     */
-    matchElementNamed(string: string): Chainable<Element>
-    /**
-     * Assert page matches screenshot
-     */
-    matchPage(): Chainable<Element>
-    // --------------------------------------
     // interactions/click.js
     // --------------------------------------
     /**
@@ -251,12 +233,6 @@ declare namespace Cypress {
      * @param {string} name     "name" attribute of form element
      */
     typeStringInto(value: string, name: string): Chainable<Element>
-    /**
-     * Enter a "value" into a "name" form element controlled by CKEditor
-     * @param {string} value    data to enter into form
-     * @param {string} name     "name" attribute of form element
-     */
-    typeStringIntoCkeditor(value: string, name: string): Chainable<Element>
     // --------------------------------------
     // framework/laravel/app.js
     // --------------------------------------
