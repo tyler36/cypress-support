@@ -1,10 +1,13 @@
 import { Then } from '@badeball/cypress-cucumber-preprocessor'
 
 Then( 'I should see a {string} selector', cy.selectorExist )
-Then( 'I should not see {string} selector', cy.selectorNotExist )
+Then( 'I should not see a {string} selector', cy.selectorNotExist )
 
-Then( 'I should see {string} in {string}', cy.selectorContainsString )
-Then( 'I should not see {string} in {string}', cy.selectorNotContainsString )
+Then( 'I should see {string} in {string}', ( string, selector ) => cy.selectorContainsString( selector, string ) )
+Then(
+    'I should not see {string} in {string}',
+    ( string, selector ) => cy.selectorNotContainsString( selector, string )
+)
 
 Then( '{string} should have {string} value', cy.selectorContainsValue )
 Then( '{string} should not have {string} value', cy.selectorNotContainsValue )
@@ -28,5 +31,10 @@ Then( 'the {string} metaName should be {string}', cy.metaName )
 
 Then( 'I should see a script with src={string}', cy.scriptExist )
 
+Then( 'the {string} selector should have CSS {string} set to {string}', cy.cssSelectorSet )
+Then( 'the {string} selector should not have CSS {string} set to {string}', cy.cssSelectorNotSet )
+
+Then( '{string} should be checked', cy.selectorIsChecked )
+Then( '{string} should not be checked', cy.selectorIsNotChecked )
 Then( 'I should not see errors', cy.notSeeErrors )
 Then( 'エラーは表示されません', cy.notSeeErrors )

@@ -1,4 +1,4 @@
-describe( 'interactions', () => {
+describe( 'Interaction Commands', () => {
     it( 'clicks a selector', () => {
         cy.visit( '/interactions.html' )
 
@@ -33,7 +33,7 @@ describe( 'interactions', () => {
         target.contains( 'updated' )
     } )
 
-    it( 'checks selector', () => {
+    it( 'checks checkbox selector', () => {
         cy.visit( '/interactions.html' )
 
         const selector = '[name="checkbox"]'
@@ -44,7 +44,7 @@ describe( 'interactions', () => {
         target.should( 'be.checked' )
     } )
 
-    it( 'selects an option', () => {
+    it( 'selects a form option', () => {
         cy.visit( '/interactions.html' )
 
         cy.get( 'select[name="fruit"] [value="apple"]' ).should( 'be.selected' )
@@ -53,7 +53,7 @@ describe( 'interactions', () => {
         cy.get( 'select[name="fruit"] [value="banana"]' ).should( 'be.selected' )
     } )
 
-    it( 'types text', () => {
+    it( 'types text into input', () => {
         cy.visit( '/interactions.html' )
 
         const email = 'example@example.com'
@@ -64,7 +64,7 @@ describe( 'interactions', () => {
         target.should( 'have.value', email )
     } )
 
-    it( 'scroll distance', () => {
+    it( 'scroll the page', () => {
         cy.visit( '/interactions.html' )
 
         cy.get( '#toTop' ).should( 'not.be.visible' )
@@ -76,7 +76,7 @@ describe( 'interactions', () => {
         cy.get( '#toTop' ).should( 'not.be.visible' )
     } )
 
-    it( 'scroll to selector position', () => {
+    it( 'It scrolls a selector', () => {
         cy.visit( '/interactions.html' )
 
         cy.get( '#privacy-confirmed' ).should( 'not.be.visible' )
