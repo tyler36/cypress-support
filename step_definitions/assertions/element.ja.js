@@ -29,6 +29,6 @@ Then( 'スクリプト{string}が存在するはずです', cy.scriptExist )
 Then( '{string}セレクターには、{string}に{string}に設定されている必要があります', cy.cssSelectorSet )
 Then( '{string}セレクターには、{string}に設定されているcss {string}に設定されてはいけません', cy.cssSelectorNotSet )
 
-Then( '{string}はチェックする必要があります', cy.selectorIsChecked )
-Then( '{string}はチェックしないでください', cy.selectorIsNotChecked )
+Then( '{string}入力がチェックされます', cy.selectorIsChecked )
+Then( '{string}入力はチェックされません', cy.selectorIsNotChecked )
 Then( 'エラーは表示されません', cy.notSeeErrors )
