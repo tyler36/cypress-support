@@ -1,6 +1,5 @@
 import { Given } from '@badeball/cypress-cucumber-preprocessor'
 
-Given( 'I visit {string}', cy.visit )
 Given( '{string}にアクセスします', cy.visit )
 
-Given( 'disable fixed header', cy.disableHeader )
+Given( '固定ヘッダーを無効にします', cy.disableHeader )

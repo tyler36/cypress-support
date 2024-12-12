@@ -19,7 +19,7 @@ Feature: Interactions Step Definitions
   Scenario: It checks checkbox selector
     Given I visit "/interactions.html"
     Then "checkbox" should not be checked
-    When I check "[name='checkbox']"
+    When I check "checkbox"
     Then "checkbox" should be checked
   Scenario: It selects a form option
     Given I visit "/interactions.html"
