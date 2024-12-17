@@ -2,7 +2,7 @@
   "name": "cypress-support",
   "description": "Helper command for Cypress.",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "author": "tyler36",
   "license": "ISC",
   "scripts": {
