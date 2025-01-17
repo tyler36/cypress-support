@@ -12,7 +12,7 @@ This repository contains helper commands for use with Cypress.
 1. Require the package via GitHub
 
     ```shell
-    npm i https://github.com/tyler36/cypress-support\#prep-for-release
+    npm install https://github.com/tyler36/cypress-support
     ```
 
 2. Import commands in to Cypress's `e2e.js` file. Default location: `cypress/support/e2e.js`
