@@ -18,7 +18,7 @@ This repository contains helper commands for use with Cypress.
 2. Import commands in to Cypress's `e2e.js` file. Default location: `cypress/support/e2e.js`
 
     ```js
-    import '../../node_modules/cypress-support/commands'
+    import 'cypress-support/src/commands/commands'
     ```
 
 3. Add/update `cypress/fixtures/selector.json` to include an "error" selector.
