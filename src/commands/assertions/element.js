@@ -1,4 +1,4 @@
-import selector from '../../../../cypress/fixtures/selector.json'
+import selector from '../../../../../cypress/fixtures/selector.json'
 
 /**
  * Assert "selector" exists on page
