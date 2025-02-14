@@ -16,6 +16,6 @@
     "eslint": "^9.16.0",
     "eslint-formatter-junit": "^8.40.0",
     "eslint-plugin-cypress": "^4.1.0",
-    "globals": "^15.13.0"
+    "globals": "^15.15.0"
   }
 }
