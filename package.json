@@ -12,7 +12,7 @@
   "devDependencies": {
     "@eslint/js": "^9.16.0",
     "@stylistic/eslint-plugin-js": "^3.1.0",
-    "cypress": "^13.16.1",
+    "cypress": "^14.0.3",
     "eslint": "^9.20.1",
     "eslint-formatter-junit": "^8.40.0",
     "eslint-plugin-cypress": "^4.1.0",
