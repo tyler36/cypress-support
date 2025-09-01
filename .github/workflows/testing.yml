@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - run: npm i
 
       - name: "🧹 Run Eslint"
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: '☁️ Checkout repository'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: 'github-action-add-on-test'
         uses: ddev/github-action-add-on-test@v2
