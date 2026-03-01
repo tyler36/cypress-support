@@ -10,10 +10,10 @@
     "test": "bats tests/test.bats"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "cypress": "^15.9.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "eslint-formatter-junit": "^9.0.1",
     "eslint-plugin-cypress": "^5.2.1",
     "globals": "^17.3.0"
