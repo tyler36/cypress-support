@@ -13,7 +13,7 @@
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin-js": "^4.2.0",
     "cypress": "^15.11.0",
-    "eslint": "^10.0.2",
+    "eslint": "^10.1.0",
     "eslint-formatter-junit": "^9.0.1",
     "eslint-plugin-cypress": "^5.2.1",
     "globals": "^17.4.0"
