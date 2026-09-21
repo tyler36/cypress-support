@@ -1,6 +1,6 @@
 import globals from 'globals'
 import js from '@eslint/js'
-import pluginCypress from 'eslint-plugin-cypress/flat'
+import pluginCypress from 'eslint-plugin-cypress'
 import stylisticJs from '@stylistic/eslint-plugin-js'
 
 export default [
